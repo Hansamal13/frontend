@@ -35,13 +35,37 @@ function Csign() {
 
   const validateForm = () => {
     const newErrors = {};
-    if (!inputs.Fname) newErrors.Fname = "First name is required";
-    if (!inputs.Lname) newErrors.Lname = "Last name is required";
+
+    // Validate first name
+    if (!inputs.Fname) {
+      newErrors.Fname = "First name is required";
+    } else if (/[^a-zA-Z\s]/.test(inputs.Fname)) {
+      newErrors.Fname = "First name cannot contain special characters (@, #, &, *)";
+    }
+
+    // Validate last name
+    if (!inputs.Lname) {
+      newErrors.Lname = "Last name is required";
+    } else if (/[^a-zA-Z\s]/.test(inputs.Lname)) {
+      newErrors.Lname = "Last name cannot contain special characters (@, #, &, *)";
+    }
+
+    // Validate email
     if (!inputs.Email_address) newErrors.Email_address = "Email is required";
-    if (!inputs.ContactNumber) newErrors.ContactNumber = "Contact number is required";
-    if (inputs.ContactNumber.length !== 10) newErrors.ContactNumber = "Contact number must be 10 digits";
+
+    // Validate contact number
+    if (!inputs.ContactNumber) {
+      newErrors.ContactNumber = "Contact number is required";
+    } else if (!/^\d{10}$/.test(inputs.ContactNumber)) {
+      newErrors.ContactNumber = "Contact number must be exactly 10 digits";
+    }
+
+    // Validate address
     if (!inputs.Address) newErrors.Address = "Address is required";
+
+    // Validate password
     if (!inputs.Password) newErrors.Password = "Password is required";
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -74,11 +98,8 @@ function Csign() {
   return (
     <div className="signup-container">
       <Nav />
-
-      
       <h1 className="signup-heading">Sign Up Form</h1>
       <form onSubmit={handleSubmit} className="signup-form">
-        
         <div className="form-group">
           <label>First Name</label>
           <input
@@ -136,16 +157,16 @@ function Csign() {
           {errors.Address && <span className="error-message">{errors.Address}</span>}
         </div>
         <div className="form-group">
-  <label>Password</label>
-  <input
-    type="String" // Use "password" type to hide the input
-    name="Password" // Corrected name attribute
-    value={inputs.Password}
-    onChange={handleChange}
-    className="form-input"
-  />
-  {errors.Password && <span className="error-message">{errors.Password}</span>}
-</div>
+          <label>Password</label>
+          <input
+            type="password" // Use "password" type to hide the input
+            name="Password"
+            value={inputs.Password}
+            onChange={handleChange}
+            className="form-input"
+          />
+          {errors.Password && <span className="error-message">{errors.Password}</span>}
+        </div>
 
         <div className="form-group">
           <label>Profile Photo</label>
