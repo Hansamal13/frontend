@@ -20,33 +20,73 @@ function Alllogin() {
       ...prevState,
       [name]: value
     }));
+
+    // Live validation while typing
+    validateField(name, value);
+  };
+
+  const validateField = (name, value) => {
+    let error = "";
+    
+    if (name === "Email_address") {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!value) {
+        error = "Email is required";
+      } else if (!emailRegex.test(value)) {
+        error = "Enter a valid email address";
+      }
+    }
+
+    if (name === "Password") {
+      if (!value) {
+        error = "Password is required";
+      } else if (value.length < 6) {
+        error = "Password must be at least 6 characters";
+      }
+    }
+
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      [name]: error
+    }));
   };
 
   const validateForm = () => {
     const newErrors = {};
-    if (!inputs.Email_address) newErrors.Email_address = "Email is required";
-    if (!inputs.Password) newErrors.Password = "Password is required";
+
+    if (!inputs.Email_address) {
+      newErrors.Email_address = "Email is required";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(inputs.Email_address)) {
+      newErrors.Email_address = "Enter a valid email address";
+    }
+
+    if (!inputs.Password) {
+      newErrors.Password = "Password is required";
+    } else if (inputs.Password.length < 6) {
+      newErrors.Password = "Password must be at least 6 characters";
+    }
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (validateForm()) {
       try {
-        console.log("Attempting login with:", inputs); // Debug log
-        
+        console.log("Attempting login with:", inputs);
+
         const response = await axios.post("http://localhost:5000/users/login", {
           Email_address: inputs.Email_address,
           Password: inputs.Password
         });
-        
-        console.log("Login response:", response.data); // Debug log
-        
+
+        console.log("Login response:", response.data);
+
         if (response.data.success) {
-          // Store user data in localStorage or context if needed
           localStorage.setItem('user', JSON.stringify(response.data.user));
-          navigate('/userdetails'); // Navigate to user details page after login
+          navigate('/userdetails');
         } else {
           setLoginError(response.data.message || "Invalid email or password");
         }
@@ -65,7 +105,6 @@ function Alllogin() {
   return (
     <div className="login-container">
       <Nav />
-
       <br/><br/><br/><br/><br/>
       <div className="login-card">
         <h1 className="login-heading">Customer Login</h1>
