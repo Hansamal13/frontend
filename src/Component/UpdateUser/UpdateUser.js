@@ -1,85 +1,136 @@
-import React,{useEffect,useState} from 'react';
-import axios from 'axios';
-import {useParams} from 'react-router';
-import { useNavigate } from 'react-router';
 
-
-
-function UpdateUser() {
-
-    const [inputs,setInputs] = useState({});
-    const history = useNavigate();
-    const id = useParams().id;
-
-    useEffect(()=>{
-        const fetchHandler = async ()=>{
-            await axios
-            .get(`http://localhost:5000/users/${id}`)
-            .then((res)=> res.data)
-            .then((data)=> setInputs(data.user));
-            };
-            fetchHandler();
-     },[id]);
-
-        const sendRequest = async ()=>{
-        await axios
-        .put(`http://localhost:5000/users/${id}`,{
-            Fname: String(inputs.Fname),
-             Lname: String(inputs.Lname),
-             Email_address: String(inputs.Email_address),
-            password: String(inputs.password),
-        })
-
-        .then((res) => res.data);
-    };
-
-    const handleChange =(e) => {
-        setInputs((prevState) => ({
-          ...prevState,
-          [e.target.name]:e.target.value,
-        }));
-      };
-    
-    
-      const handleSubmit = (e)=>{
-        e.preventDefault();
-        console.log(inputs);
-        sendRequest().then(()=>history('/userdetails'))
-      };
-
-
-  return (
-    <div>
-      <h1>Update User</h1>
-
-      <form onSubmit={handleSubmit}>
-        <lable>Name : </lable>
-        <br/>
-        <input type="text" name="Fname" onChange={handleChange} value={inputs.Fname}  required></input>
-        <br/><br/>
-
-        <lable>LName : </lable>
-        <br/>
-        <input type="text" name="Lname" onChange={handleChange} value={inputs.Lname}  required></input>
-        <br/><br/>
-
-        <lable>Email : </lable>
-        <br/>
-        <input type="text" name="Email_address" onChange={handleChange}  value={inputs.Email_address}  required></input>
-        <br/><br/>
-
-        <lable>Password : </lable>
-        <br/>
-        <input type="text" name="password"  onChange={handleChange}  value={inputs.password}  required></input>
-        <br/><br/>
-        <button>Submit</button>
-      </form>
-
-
-
-
-    </div>
-  )
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-export default UpdateUser
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  width: 90%;
+  max-width: 900px;
+  background: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  display: flex;
+  overflow: hidden;
+}
+
+.signup-box {
+  display: flex;
+  width: 100%;
+}
+
+.box {
+  padding: 30px;
+  flex: 1;
+  text-align: center;
+}
+
+h2 {
+  font-size: 22px;
+  margin-bottom: 15px;
+}
+
+p {
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.main-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #1d4ed8;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+
+.main-btn:hover {
+  background-color: #354477;
+}
+
+.or {
+  margin: 10px 0;
+  color: #999;
+  font-size: 14px;
+}
+
+.social-btn {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 50px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  background-color: white;
+  transition: background 0.2s;
+}
+
+.social-btn:hover {
+  background-color: #f0f0f0;
+}
+
+
+
+
+
+
+
+
+.F {
+  width: 20px;
+  height: 20px;
+}
+
+.G {
+  width: 20px;
+  height: 20px;
+}
+
+.small-text {
+  font-size: 12px;
+  color: #666;
+  margin-top: 15px;
+}
+
+.small-text a {
+  color: #1d4ed8;
+  text-decoration: none;
+}
+
+.small-text a:hover {
+  text-decoration: underline;
+}
+
+.collector {
+  border-right: 1px solid #eee;
+}
+
+@media (max-width: 768px) {
+  .signup-box {
+    flex-direction: column;
+  }
+  
+  .collector {
+    border-right: none;
+    border-bottom: 1px solid #eee;
+  }
+}
+
