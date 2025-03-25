@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Nav from '../Nav/Nav';
 import './SignUpCss.css';
@@ -8,7 +9,7 @@ function SignUp() {
     <div>
       <Nav />
       <h1>Sign Up Customer</h1>
-
+        <br/><br/><br/><br/>
       <div className="container">
         <div className="signup-box">
 
