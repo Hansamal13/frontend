@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Nav from '../Nav/Nav';
 import axios from 'axios';
 import UserProfile from "../Profile/UserProfile";
-import './user.css'; // We'll create this CSS file
+import './User.css'; // We'll create this CSS file
 
 function User() {
   const [users, setUsers] = useState([]);
