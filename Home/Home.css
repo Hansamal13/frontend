@@ -1,0 +1,152 @@
+/* Home.css */
+.home-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Description Section */
+.description {
+  text-align: center;
+  margin-bottom: 30px;
+  background-color: #f9f9f9;
+  padding: 30px;
+  border-radius: 10px;
+}
+
+.description h2 {
+  color: #333;
+  margin-bottom: 20px;
+  font-size: 2rem;
+}
+
+.description p {
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.registration-info {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #e9f5ff;
+  border-radius: 5px;
+}
+
+.registration-link {
+  display: inline-block;
+  background-color: #2980b9;
+  color: white;
+  padding: 10px 15px;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.registration-link:hover {
+  background-color: #0056b3;
+}
+
+/* Workshop Search */
+.workshop-search {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.search-container {
+  display: flex;
+  justify-content: center;
+}
+
+.search-input {
+  width: 100%;
+  max-width: 500px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+/* Workshop Catalog */
+.workshop-catalog {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.workshop-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.workshop-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.workshop-image {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.workshop-content {
+  padding: 15px;
+}
+
+.workshop-content h3 {
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.workshop-content p {
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.workshop-view-btn {
+  display: block;
+  width: 100%;
+  text-align: center;
+  background-color: #2980b9;
+  color: white;
+  padding: 10px;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.workshop-view-btn:hover {
+  background-color: #007bff;
+}
+
+.no-results {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: #666;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .home-container {
+    padding: 10px;
+  }
+
+  .workshop-catalog {
+    grid-template-columns: 1fr;
+  }
+
+  .description {
+    padding: 15px;
+  }
+}

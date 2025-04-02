@@ -1,0 +1,122 @@
+/* Catalog Page Stylesheet */
+body {
+    background-color: #ffffff;
+    font-family: 'Arial', sans-serif;
+    color: #2c3e50;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    max-width: 1100px;
+    margin: 50px auto;
+    background-color: #f4f7f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.image-container {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.image-container:hover img {
+    transform: scale(1.05);
+}
+
+.details {
+    flex: 1.5;
+    padding: 30px;
+    background-color: white;
+}
+
+.details h3 {
+    color: #1a5f7a;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #2980b9;
+    padding-bottom: 10px;
+}
+
+.details p {
+    color: #34495e;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+.course-info {
+    display: flex;
+    justify-content: space-between;
+    background-color: #f0f4f7;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.course-info div {
+    text-align: center;
+}
+
+.course-info h4 {
+    color: #2980b9;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.course-info p {
+    color: #2c3e50;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        margin: 20px;
+    }
+
+    .image-container, .details {
+        flex: none;
+        width: 100%;
+    }
+
+    .details h3 {
+        font-size: 1.6rem;
+    }
+}
+
+/* Subtle Hover Effects */
+.course-info div:hover {
+    transform: translateY(-3px);
+    transition: transform 0.3s ease;
+}
+
+/* Accessibility Enhancements */
+@media (prefers-reduced-motion: reduce) {
+    .image-container img,
+    .course-info div {
+        transition: none;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .container {
+        box-shadow: none;
+        border: 1px solid #e0e0e0;
+    }
+}
