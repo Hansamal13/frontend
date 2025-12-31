@@ -4,6 +4,7 @@ import axios from "axios";
 import Nav from "../Nav/Nav";
 import './AddArt.css';
 
+
 function AddArt() {
     const navigate = useNavigate();
     const [inputs, setInputs] = useState({
@@ -21,6 +22,7 @@ function AddArt() {
     const handleChange = (e) => {
         const { name, value } = e.target;
 
+        
         // price, remove non-numeric characters
         if (name === "price") {
             let numericValue = value.replace(/[^0-9]/g, ""); // Allow only numbers
@@ -42,6 +44,7 @@ function AddArt() {
             }));
         }
     };
+    
 
     const handleImageChange = (e) => {
         const selectedFile = e.target.files[0];
@@ -58,6 +61,7 @@ function AddArt() {
         }
     };
 
+    
     const uploadImage = async () => {
         if (!image) return null;
         
@@ -263,5 +267,6 @@ function AddArt() {
         </>
     );
 }
+
 
 export default AddArt;
