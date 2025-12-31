@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Footer from "../Nav/Footer";
 
-
 function AddUser() {
   const history = useNavigate();
   const [inputs, setInputs] = useState({
@@ -40,7 +39,6 @@ function AddUser() {
       console.error("Submission Error:", error.response ? error.response.data : error.message);
     }
   };
-
 
   const sendRequest = async () => {
     return await axios.post("http://localhost:5000/users", {
@@ -791,6 +789,7 @@ function AddUser() {
 }
 
 export default AddUser;
+
 
 
 
