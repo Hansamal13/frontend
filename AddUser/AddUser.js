@@ -4,7 +4,6 @@ import "./AddUser.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Footer from "../Nav/Footer";
-
 function AddUser() {
   const history = useNavigate();
   const [inputs, setInputs] = useState({
@@ -19,14 +18,12 @@ function AddUser() {
     month: "",
     date: "",
   });
-
   const handleChange = (e) => {
     setInputs((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
     }));
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Submitting Data:", inputs);
@@ -39,7 +36,6 @@ function AddUser() {
       console.error("Submission Error:", error.response ? error.response.data : error.message);
     }
   };
-
   const sendRequest = async () => {
     return await axios.post("http://localhost:5000/users", {
       name: String(inputs.name),
@@ -54,7 +50,6 @@ function AddUser() {
       date: String(inputs.date),
     });
   };
-
   return (
     <div>
       <Nav />
@@ -65,10 +60,8 @@ function AddUser() {
         <h1>Student Information</h1>
         <label>Name:</label>
         <input type="text" name="name" onChange={handleChange} value={inputs.name} required />
-
         <label>Gmail:</label>
         <input type="email" name="gmail" onChange={handleChange} value={inputs.gmail} required />
-
         <label>City:</label>
         <select name="city" onChange={handleChange} value={inputs.city} required>
           <option value="">--Select City--</option>
@@ -85,7 +78,6 @@ function AddUser() {
           <option value="Ampara">Ampara</option>
           <option value="Others">Others</option>
         </select>
-
         <label>Phone Number:</label>
         <input
           type="tel"
@@ -96,7 +88,6 @@ function AddUser() {
           placeholder="Enter 10-digit number"
           required
         />
-
         <label>Age Group:</label>
         <select name="age" onChange={handleChange} value={inputs.age} required>
           <option value="">--Select Age Group--</option>
@@ -105,7 +96,6 @@ function AddUser() {
           <option value="26-35">26-35</option>
           <option value="36 and above">36 and above</option>
         </select>
-
         <label>How did you hear about the workshop?</label>
         <select name="howknow" onChange={handleChange} value={inputs.howknow} required>
           <option value="">--Select Source--</option>
@@ -115,7 +105,6 @@ function AddUser() {
           <option value="Website">Website</option>
           <option value="Others">Others</option>
         </select>
-
         <h1>Worshop/Course Information</h1>
         <label>Workshop Title:</label>
         <select name="title" onChange={handleChange} value={inputs.title} required>
@@ -131,7 +120,6 @@ function AddUser() {
           <option value="Mosaic Art Workshop">Mosaic Art Workshop</option>
           <option value="Art Installation & Conceptual Art Workshop">Art Installation & Conceptual Art Workshop</option>
         </select>
-
         <label>Instructor:</label>
         <select name="instructor" onChange={handleChange} value={inputs.instructor} required>
           <option value="">--Select Instructor--</option>
@@ -789,6 +777,7 @@ function AddUser() {
 }
 
 export default AddUser;
+
 
 
 
