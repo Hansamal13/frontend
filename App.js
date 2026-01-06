@@ -12,8 +12,11 @@ import WorkshopList from './Components/WorkshopList/WorkshopList';
 import WorkshopDetails from './Components/WorkshopDetails/WorkshopDetails';
 
 function App() {
+  
   return (
+    
     <Router> {/* ✅ Wrap everything inside <Router> */}
+    
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
@@ -29,6 +32,7 @@ function App() {
         <Route path="/workshopdetails" element={<WorkshopDetails />} />
   
       </Routes>
+  
     </Router>
   );
 }
